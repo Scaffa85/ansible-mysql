@@ -1,0 +1,16 @@
+---
+- name: Set up MySQL Community repository.
+  yum_repository:
+  name: mysql-community
+  description: "Community repositories for MySQL"
+  mirrorlist: "MIRRORS FOR MYSQL"
+  failovermethod: priority
+  gpgkey: "GPG_KEY FOR MYSQL"
+  gpgcheck: yes
+  enabled: yes
+
+- name: Ensure dependancies are installed.
+  package:
+    name:
+      - DEPENDANCY
+
