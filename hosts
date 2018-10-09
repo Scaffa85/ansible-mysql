@@ -1,7 +1,7 @@
 [all:children]
-centos7
-ubuntu-xenial
+centos7 ansible_ssh_username=vagrant
+ubuntu-xenial ansible_ssh_username=vagrant
 [centos7]
-192.168.33.30 ansible_ssh_username=vagrant
+192.168.33.30 
 [ubuntu-xenial]
-192.168.33.20 ansible_ssh_username=vagrant
+192.168.33.20
