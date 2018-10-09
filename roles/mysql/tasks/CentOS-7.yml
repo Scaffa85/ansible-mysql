@@ -1,0 +1,6 @@
+---
+# Specifics to Operating System.
+package_manager: "yum"
+
+
+# Specifics to Packages.
