@@ -8,10 +8,10 @@
 
 - name: Install MySQL repository (Ubuntu).
   include: install_repo_deb.yml 
-  when: "{{ ansible_distribution }}" == "Ubuntu"
+  when:  ansible_distribution  == "Ubuntu"
 
 - name: Install MySQL repository (RedHat / CentOS).
   include: install_repo_yum.yml
-  when: "{{ ansible_distribution }}" == "CentOS"
+  when: ansible_distribution  == "CentOS"
 
 

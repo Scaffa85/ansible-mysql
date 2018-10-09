@@ -1,0 +1,4 @@
+---
+# Variables that are relevent to the 'commom' role.
+
+common_packages: ['vim', 'tmux']
