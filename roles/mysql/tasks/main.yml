@@ -7,4 +7,4 @@
   tags: vars
 
 - name: this is just a placeholder
-  command: /bin/echo "{{ package_manager }}"
+  command: /bin/cat "{{ package_manager }}" > /tmp/test
