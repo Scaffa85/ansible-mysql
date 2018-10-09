@@ -4,3 +4,4 @@ package_manager: "yum"
 
 
 # Specifics to Packages.
+mysql_repo_rpm: "mysql-community-release-el7-7.noarch.rpm"
