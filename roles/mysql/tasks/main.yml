@@ -16,10 +16,10 @@
 
 - name: Include Disable Tasks for CentOS
   include: yum_disable_5_7.yml
-  when: mysql_version == "5.6"
+  when: (mysql_version == "5.6" and ansible_distribution  == "CentOS")
 
 - name: Include Disable Tasks for CentOS
   include: yum_disable_5_6.yml
-  when: mysql_version == "5.7"
+  when: (mysql_version == "5.7" and ansible_distribution  == "CentOS")
 
 
