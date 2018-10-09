@@ -1,10 +1,17 @@
 # OS Specific Facts
-- name: Set OS Specific facts
+- name: Set OS Specific facts.
   include_vars: "{{ item }}"
   with_first_found:
     - "{{ ansible_distribution }}-{{ ansible_distribution_major_version}}.yml"
     - "{{ ansible_distribution }}.yml"
   tags: vars
 
-- name: this is just a placeholder
-  command: /bin/cat "{{ package_manager }}" > /tmp/test
+- name: Install MySQL repository (Ubuntu).
+  include: install_repo_deb.yml 
+  when: "{{ ansible_distribution }}" == "Ubuntu"
+
+- name: Install MySQL repository (RedHat / CentOS).
+  include: install_repo_yum.yml
+  when: "{{ ansible_distribution }}" == "CentOS"
+
+
