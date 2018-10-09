@@ -14,4 +14,12 @@
   include: install_repo_yum.yml
   when: ansible_distribution  == "CentOS"
 
+- name: Include Disable Tasks for CentOS
+  include: yum_disable_5_7.yml
+  when: mysql_version == "5.6"
+
+- name: Include Disable Tasks for CentOS
+  include: yum_disable_5_6.yml
+  when: mysql_version == "5.7"
+
 

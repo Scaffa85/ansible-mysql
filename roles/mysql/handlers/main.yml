@@ -1,4 +1,4 @@
 ---
-handlers:
-  - name: yum_clean_metadata
-    command: yum clean metadata
+
+- name: yum_clean_metadata
+  command: yum clean metadata

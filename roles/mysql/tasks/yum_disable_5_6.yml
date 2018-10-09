@@ -1,0 +1,7 @@
+---
+- name: Disable Repository Not Being Used (5.6)
+  ini_file:
+    dest: "{{ mysql_repo_location }}"
+    section: "{{ mysql_5_6_section }}"
+    option: enabled
+    value: 0

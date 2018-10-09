@@ -1,0 +1,4 @@
+---
+# Some defaults
+
+mysql_version: "5.6"
