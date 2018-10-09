@@ -6,10 +6,5 @@
     - "{{ ansible_distribution }}.yml"
   tags: vars
 
-# Setup/install tasks for RedHat
-#- include_tasks: setup-RedHat.yml
-#  when: ansible_os_family == 'RedHat'
-
-# Setup/install tasks for Ubuntu
-#- include_tasks: setup-Ubuntu.yml
-#  when: ansible_os_family == 'Ubuntu'
+- name: this is just a placeholder
+  command: /bin/echo "{{ package_manager }}"
