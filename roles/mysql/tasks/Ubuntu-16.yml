@@ -2,5 +2,6 @@
 # Specifics to Operating System.
 package_manager: "apt"
 
-
 # Specifics to Packages.
+
+mysql_package_name: "mysql-server-core-5.7"
