@@ -9,6 +9,7 @@ This role should fullfill these requirements:
 
 # Map
 
+```
 ├── site.yml < this is the playbook which runs the entire installation
 ├── roles
 │   ├── mysql
@@ -48,5 +49,5 @@ This role should fullfill these requirements:
 │   └── all.yml < Variables that are included for all.
 ├── filter_plugins
 └── ansible-create.py < The script which created the directory structure.
-
+```
 
