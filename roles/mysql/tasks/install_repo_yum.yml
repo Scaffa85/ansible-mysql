@@ -9,6 +9,15 @@
   yum: 
   name: /tmp/{{ mysql_repo_rpm }}
 
+- name: Toggle MySQL version - 5.5
+  ini_file:
+    dest: "{{ mysql_repo_location }}"
+    section: "{{ mysql_5_5_section }}"
+    option: enabled
+    value: 1
+  when: mysql_version == "5.5"
+  notify: yum_clean_metadata
+
 - name: Toggle MySQL version - 5.6
   ini_file:
     dest: "{{ mysql_repo_location }}"
@@ -16,15 +25,6 @@
     option: enabled
     value: 1
   when: mysql_version == "5.6"
-  notify: yum_clean_metadata
-
-- name: Toggle MySQL version - 5.7
-  ini_file:
-    dest: "{{ mysql_repo_location }}"
-    section: "{{ mysql_5_7_section }}"
-    option: enabled
-    value: 1
-  when: mysql_version == "5.7"
   notify: yum_clean_metadata
 
 #- name: Disable Repository Not Being Used (5.7)
