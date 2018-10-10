@@ -1,12 +1,6 @@
 ---
 
-- name: Add MySQL APT key.
-  apt_key:
-    keyserver: pgp.mit.edu
-    id: 5072E1F5
-    state: present
-
-- name: Add MySQL ubuntu xenial repository.
+- name: Add MySQL 8 ubuntu xenial repository
   apt_repository: 
     repo: "deb http://repo.mysql.com/apt/ubuntu xenial mysql-{{ mysql_version }}"
     state: present
