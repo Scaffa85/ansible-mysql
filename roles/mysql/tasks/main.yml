@@ -25,5 +25,3 @@
 - name: Include Disable Tasks for CentOS
   include: yum_disable_5_7.yml
   when: (mysql_version is defined and ansible_distribution == "CentOS")
-
-
