@@ -3,7 +3,7 @@
 
 - lineinfile:
     path: "{{ repository_path}}/{{ repo_mysql_com_apt_ubuntu.list }}"
-    regexp: '5\.7'
+    regexp: '5\.6'
     state: absent
 
 
