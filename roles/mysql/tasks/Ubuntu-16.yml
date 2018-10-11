@@ -1,7 +1,10 @@
 ---
 # Specifics to Operating System.
 package_manager: "apt"
+system_daemon: "systemctl"
+repository_path: "/etc/apt/sources.list.d"
+repositry_filename: "repo_mysql_com_apt_ubuntu.list"
 
 # Specifics to Packages.
-
+mysql_service_name: "mysql"
 mysql_package_name: "mysql-server-core-5.7"

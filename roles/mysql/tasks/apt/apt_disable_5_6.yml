@@ -1,0 +1,9 @@
+---
+# Removes unused repository to prevent apt from getting packages from different versions.
+
+- lineinfile:
+    path: "{{ repository_path }}/{{ repositry_filename }}"
+    regexp: '5\.6'
+    state: absent
+
+

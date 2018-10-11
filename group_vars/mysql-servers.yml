@@ -1,8 +1,5 @@
 ---
-mysql_version: "5.5"
-mysql_repo_location: "/etc/yum.repos.d/mysql-community.repo"
-mysql_repo_rpm: "mysql-community-release-el7-7.noarch.rpm"
-mysql_repo_location: "/etc/yum.repos.d/mysql-community.repo"
-mysql_5_7_section: "mysql57-community"
-mysql_5_6_section: "mysql56-community"
-mysql_5_5_section: "mysql55-community"
+mysql_version: "5.6"
+mysql_databases:
+  - "placeholder1"
+  - "placeholder2"
