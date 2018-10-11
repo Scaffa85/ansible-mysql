@@ -2,7 +2,7 @@
 # Removes unused repository to prevent apt from getting packages from different versions.
 
 - lineinfile:
-    path: "{{ repository_path }}/{{ repo_mysql_com_apt_ubuntu }}"
+    path: "{{ repository_path }}/{{ repositry_filename }}"
     regexp: '5\.6'
     state: absent
 
