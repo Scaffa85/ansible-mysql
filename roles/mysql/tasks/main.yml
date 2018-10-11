@@ -41,3 +41,7 @@
 - name: Install MySQL Server
   include: "{{ role_path }}/tasks/install_mysql_server.yml"
   when: mysql_version is defined 
+
+- name: Configure MySQL Users / Passwords
+  include: "{{ role_path }}/tasks/configure_mysql_users.yml"
+  when: root_password is defined

@@ -8,4 +8,4 @@ repositry_filename: "repo_mysql_com_apt_ubuntu.list"
 # Specifics to Packages.
 mysql_service_name: "mysql"
 mysql_server_package: "mysql-server"
-mysql_python_package: "python-pymysql"
+mysql_python_package: "python-mysqldb"

@@ -1,0 +1,15 @@
+---
+
+- name: Remove anonymous users for all hosts.
+  mysql_user:
+    name: ''
+    host_all: yes
+    state: absent
+
+- name: Set root password.
+  mysql_user:
+    name: root
+    password: "{{ root_password }}"
+    priv: '*.*:ALL'
+    state: present
+  no_log: true
