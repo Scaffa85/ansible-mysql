@@ -1,0 +1,15 @@
+---
+
+- name: Install MySQL Server.
+  package:
+    name: mysql-server
+    state: present
+
+- name: Enable MySQL Server and Ensure Running.
+  systemd:
+    name: "{{ mysql_service_name }}"
+    state: started
+    enabled: yes
+  when: system_daemon == "systemd"
+
+    

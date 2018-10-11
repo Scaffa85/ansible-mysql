@@ -39,5 +39,5 @@
   when: (mysql_version is defined and ansible_distribution == "Ubuntu")
 
 - name: Install MySQL Server
-  include: install_mysql_server.yml
+  include: "{{ role_path }}/tasks/install_mysql_server.yml"
   when: mysql_version is defined 
