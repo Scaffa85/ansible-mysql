@@ -27,14 +27,3 @@
   when: mysql_version == "5.6"
   notify: yum_clean_metadata
 
-#- name: Disable Repository Not Being Used (5.7)
-#  ini_file:
-#    dest: "{{ mysql_repo_location }}"
-#    section: "{{ mysql_5_7_section }}"
-#    option: enabled
-#    value: 0
-#  when: disable_repo_5_7
-
-  
-
- 
