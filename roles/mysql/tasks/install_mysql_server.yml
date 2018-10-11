@@ -1,9 +1,12 @@
 ---
 
-- name: Install MySQL Server.
+- name: Install MySQL Server and MySQL Python interface.
   package:
-    name: mysql-server
+    name: "{{ item }}"
     state: present
+  with_items:
+    - "{{ mysql_server_package }}"
+    - "{{ mysql_python_package }}"
 
 - name: Enable MySQL Server and Ensure Running.
   systemd:

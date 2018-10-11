@@ -2,12 +2,12 @@
 
 - name: Download MySQL Community Repo
   get_url:
-    url: http://repo.mysql.com/{{ mysql_repo_rpm }}
-    dest: /tmp
+    url: "http://repo.mysql.com/{{ mysql_repo_rpm }}"
+    dest: "/tmp/{{ mysql_repo_rpm }}"
 
 - name: Install MySQL Community Repo
   yum: 
-  name: /tmp/{{ mysql_repo_rpm }}
+    name: "/tmp/{{ mysql_repo_rpm }}"
 
 - name: Toggle MySQL version - 5.5
   ini_file:
