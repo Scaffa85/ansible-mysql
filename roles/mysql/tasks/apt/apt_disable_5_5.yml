@@ -1,0 +1,9 @@
+---
+# Removes unused repository to prevent apt from getting packages from different versions.
+
+- lineinfile:
+    path: "{{ repository_path}}/{{ repo_mysql_com_apt_ubuntu.list }}"
+    regexp: '5\.5'
+    state: absent
+
+
