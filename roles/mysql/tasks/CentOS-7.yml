@@ -1,6 +1,7 @@
 ---
 # Specifics to Operating System.
 package_manager: "yum"
+system_daemon: "systemctl"
 
 # Specifics to Packages.
 mysql_repo_location: "/etc/yum.repos.d/mysql-community.repo"
