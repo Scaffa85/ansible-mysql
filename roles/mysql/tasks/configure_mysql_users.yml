@@ -1,4 +1,10 @@
 ---
+- name: Drop a my.cnf for root.
+  template:
+    src: "{{ role_path }}/files/my.cnf.j2"
+    dest: /root/.my.cnf
+    owner: root 
+    mode: 0644
 
 - name: Remove anonymous users for all hosts.
   mysql_user:
