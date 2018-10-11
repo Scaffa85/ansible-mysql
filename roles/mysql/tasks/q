@@ -20,3 +20,4 @@
     state: present
     update_password: always
   no_log: true
+  when: root_password is defined
