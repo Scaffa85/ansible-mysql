@@ -1,5 +1,21 @@
 ---
 
+- name: Ubuntu specific password workarounds - Set First Time
+  debconf:
+    name: "mysql-server"
+    question: "mysql-server/root_password"
+    value: "{{ root_pass | quote }}"
+    vtype: password
+  when: ansible_distribution == "Ubuntu"
+
+- name: Ubuntu specific password workarounds - Set Second Time
+  debconf:
+    name: "mysql-server"
+    question: "mysql-server/root_password_again"
+    value: "{{ root_pass | quote }}"
+    vtype: password
+  when: ansible_distribution == "Ubuntu"
+
 - name: Install MySQL Server and MySQL Python interface.
   package:
     name: "{{ item }}"
