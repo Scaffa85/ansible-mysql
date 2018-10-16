@@ -1,17 +1,12 @@
 ---
 
-- name: Test if Ubuntu Workarounds have already been performed.
-  command: grep "{{ root_password }}" /var/cache/debconf/passwords.dat
-  changed_when: no
-  register: ubuntu_mysql_passwords_set
-
 - name: Ubuntu specific password workarounds - Set First Time
   debconf:
     name: "mysql-server"
     question: "mysql-server/root_password"
     value: "{{ root_password | quote }}"
     vtype: password
-  when: (ansible_distribution == "Ubuntu" and ubuntu_mysql_passwords_set == False)
+  when: ansible_distribution == "Ubuntu"
 
 - name: Ubuntu specific password workarounds - Set Second Time
   debconf:
@@ -19,7 +14,7 @@
     question: "mysql-server/root_password_again"
     value: "{{ root_password | quote }}"
     vtype: password
-  when: (ansible_distribution == "Ubuntu" and ubuntu_mysql_passwords_set == False)
+  when: ansible_distribution == "Ubuntu"
 
 - name: Install MySQL Server and MySQL Python interface.
   package:
