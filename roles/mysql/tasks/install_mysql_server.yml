@@ -7,6 +7,7 @@
     value: "{{ root_password | quote }}"
     vtype: password
   when: ansible_distribution == "Ubuntu"
+  changed_when: False
 
 - name: Ubuntu specific password workarounds - Set Second Time
   debconf:
@@ -15,6 +16,7 @@
     value: "{{ root_password | quote }}"
     vtype: password
   when: ansible_distribution == "Ubuntu"
+  changed_when: False
 
 - name: Install MySQL Server and MySQL Python interface.
   package:
@@ -31,4 +33,3 @@
     enabled: yes
   when: system_daemon == "systemd"
 
-    
