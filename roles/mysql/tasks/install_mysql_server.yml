@@ -1,4 +1,10 @@
 ---
+- name: Ubuntu specific AppArmor workaround
+  systemd:
+    name: apparmor
+    state: stopped
+    enabled: no
+  when: ansible_distribution == "Ubuntu"
 
 - name: Ubuntu specific password workarounds - Set First Time
   debconf:
