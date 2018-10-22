@@ -10,5 +10,4 @@
   vars_files:
    - ../group_vars/all.yml
    - ../group_vars/mysql-servers.yml
-  register: test_run
 
