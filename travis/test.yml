@@ -4,15 +4,6 @@
 - hosts: localhost
   connection: local
   become: true
-
-# This playbook deploys the technology stack. 
-# Packages we want common to all servers.
-
-- name: Install common packages
   roles:
-   - common
-
-# MySQL
-- name: Install mySQL
-  roles:
-    - mysql
+    - {role: ../roles/common }
+    - {role: ../roles/mysql }
