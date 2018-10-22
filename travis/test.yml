@@ -1,0 +1,14 @@
+---
+# This playbook deploys the technology stack
+
+# Packages we want common to all servers.
+- name: Install common packages
+  hosts: all
+  roles:
+   - common
+
+# MySQL
+- name: Install mySQL
+  hosts: all
+  roles:
+    - mysql
