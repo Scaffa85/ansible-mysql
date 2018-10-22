@@ -5,4 +5,4 @@
   connection: local
   become: true
   roles:
-    - {role: ../roles/mysql }
+    - { role: ../roles/mysql }
