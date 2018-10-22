@@ -10,4 +10,6 @@
   vars_files:
    - ../group_vars/all.yml
    - ../group_vars/mysql-servers.yml
+  vars:
+    test_run: true
 
