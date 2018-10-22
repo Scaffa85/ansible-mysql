@@ -4,7 +4,7 @@
     name: apparmor
     state: stopped
     enabled: no
-  when: (ansible_distribution == "Ubuntu" and test_run is not defined)
+  when: (ansible_distribution == "Ubuntu" and test_run != true )
 
 - name: Ubuntu specific password workarounds - Set First Time
   debconf:
