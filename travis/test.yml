@@ -12,4 +12,5 @@
    - ../group_vars/mysql-servers.yml
   vars:
     test_run: true
+    root_password: 'mysuperpassword'
 
