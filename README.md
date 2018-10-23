@@ -1,9 +1,9 @@
 # ansible-mysql
 
-#CI Status
+# CI Status
 
-Master: [![Build Status](https://travis-ci.com/Scaffa85/ansible-mysql.svg?branch=master)](https://travis-ci.com/Scaffa85/ansible-mysql)
-Develop: [![Build Status](https://travis-ci.com/Scaffa85/ansible-mysql.svg?branch=develop)](https://travis-ci.com/Scaffa85/ansible-mysql)
+* Master: [![Build Status](https://travis-ci.com/Scaffa85/ansible-mysql.svg?branch=master)](https://travis-ci.com/Scaffa85/ansible-mysql)
+* Develop: [![Build Status](https://travis-ci.com/Scaffa85/ansible-mysql.svg?branch=develop)](https://travis-ci.com/Scaffa85/ansible-mysql)
 
 This role should fullfill these requirements:
 
