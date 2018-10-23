@@ -1,5 +1,5 @@
 ---
-test_run: "false"
+test_run: "true"
 mysql_user: "root"
 mysql_version: "5.6"
 mysql_databases:
