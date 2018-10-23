@@ -4,5 +4,3 @@ mysql_version: "5.6"
 mysql_databases:
   - "placeholder1"
   - "placeholder2"
-
-root_password: 'mysuperpassword'
