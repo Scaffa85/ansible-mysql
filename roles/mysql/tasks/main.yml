@@ -2,7 +2,7 @@
 - name: Set OS Specific facts.
   include_vars: "{{ item }}"
   with_first_found:
-    - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}-{{mysql_version}}.yml"
+    - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}-mysql-{{mysql_version}}.yml"
     - "{{ ansible_distribution }}.yml"
   tags: vars
 
