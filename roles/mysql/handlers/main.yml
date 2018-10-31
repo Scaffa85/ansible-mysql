@@ -2,3 +2,6 @@
 
 - name: yum_clean_metadata
   command: yum clean metadata warn=False
+
+- name: yum_update
+  command: yum update warn=False
