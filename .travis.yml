@@ -35,6 +35,6 @@ script:
   - >
     sudo docker exec "$(cat ${container_id})" mysql --version
     | grep -q '${version}'
-    && (echo 'MySQL Version Test: FAIL' && exit 1)
-    || (echo 'MySQL Version Test: PASS' && exit 0) 
+    && (echo 'MySQL Version Test: PASS' && exit 0)
+    || (echo 'MySQL Version Test: FAIL' && exit 1) 
   - 'sudo docker rm -f "$(cat ${container_id})"'
