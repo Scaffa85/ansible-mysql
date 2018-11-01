@@ -29,12 +29,10 @@ jobs:
     script:
       - container_id=$(mktemp)
       - 'sudo docker run --detach --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro --volume="${PWD}":/etc/ansible/roles/ansible-mysql:ro ${distribution}-${version}:ansible > "${container_id}"'
-
   - stage: "Linting"
     name: "Testing confirmity to BCP."
     script:
       - 'sudo docker exec "$(cat ${container_id})" ansible-lint --force-color /etc/ansible/roles/ansible-mysql/site.yml'
-
   - stage: "Testing"
     name: "Running Ansible on Containers"
     script: 
@@ -45,7 +43,6 @@ jobs:
          | grep -q 'changed=0.*failed=0'
          && (echo 'Idempotence test: pass' && exit 0)
          || (echo 'Idempotence test: fail' && exit 1)
-
    - stage: "Cleanup"
      name: "Wiping Docker containers"
      script:
