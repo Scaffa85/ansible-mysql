@@ -1,6 +1,6 @@
 # File for Travis-CI
 sudo: required
-language: ansible
+language: ruby
 services:
   - docker
 
