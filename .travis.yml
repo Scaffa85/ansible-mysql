@@ -1,6 +1,5 @@
 # File for Travis-CI
 sudo: required
-language: ruby
 services:
   - docker
 
