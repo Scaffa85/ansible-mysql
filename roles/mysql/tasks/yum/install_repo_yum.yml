@@ -16,7 +16,8 @@
     option: enabled
     value: 1
   when: mysql_version == "5.5"
-  notify: yum_clean_metadata
+  notify: 
+    - yum_clean_metadata
 
 - name: Toggle MySQL version - 5.6
   ini_file:
@@ -25,5 +26,6 @@
     option: enabled
     value: 1
   when: mysql_version == "5.6"
-  notify: yum_clean_metadata
+  notify: 
+    - yum_clean_metadata
 

@@ -10,4 +10,4 @@ ubuntu-xenial
 192.168.33.30 ansible_ssh_username=vagrant
 
 [ubuntu-xenial]
-192.168.33.20 ansible_ssh_username=vagrant
+#192.168.33.20 ansible_ssh_username=vagrant
