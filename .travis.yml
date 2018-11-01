@@ -32,9 +32,12 @@ script:
     | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotence test: PASS' && exit 0)
     || (echo 'Idempotence test: FAIL' && exit 1)
+<<<<<<< HEAD
   - >
     sudo docker exec "$(cat ${container_id})" mysql --version
     | grep -q '${version}'
     && (echo 'MySQL Version Test: PASS' && exit 0)
     || (echo 'MySQL Version Test: FAIL' && exit 1) 
+=======
+>>>>>>> 420c774baf1e412c9f31921804e031cd0f2fdccf
   - 'sudo docker rm -f "$(cat ${container_id})"'

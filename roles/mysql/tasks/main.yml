@@ -7,7 +7,7 @@
   tags: vars
 
 - name: Install MySQL repository (Ubuntu).
-  include: apt/install_repo_deb.yml 
+  include: apt/install_repo_deb.yml
   when:  ansible_distribution  == "Ubuntu"
 
 - name: Install MySQL repository (RedHat / CentOS).
@@ -40,7 +40,7 @@
 
 - name: Install MySQL Server
   include: "{{ role_path }}/tasks/install_mysql_server.yml"
-  when: mysql_version is defined 
+  when: mysql_version is defined
 
 - name: Configure MySQL Users / Passwords
   include: "{{ role_path }}/tasks/configure_mysql_users.yml"
