@@ -1,0 +1,55 @@
+---
+
+# Note: This has to be done here for Ubuntu due to the password being set up prior to the the run of the 'configure' yaml.
+# If not, we get errors setting up the database later.
+
+- name: Ubuntu Drop a my.cnf for root.
+  template:
+    src: "{{ role_path }}/files/my.cnf.j2"
+    dest: /root/.my.cnf
+    owner: root
+    mode: 0644
+  when: ansible_distribution == "Ubuntu"
+
+
+- name: Ubuntu specific AppArmor workaround
+  systemd:
+    name: apparmor
+    state: stopped
+    enabled: no
+  when: (ansible_distribution == "Ubuntu" and test_run == false )
+
+- name: Ubuntu specific password workarounds - Set First Time
+  debconf:
+    name: "mysql-server"
+    question: "mysql-server/root_password"
+    value: "{{ root_password | quote }}"
+    vtype: password
+  when: ansible_distribution == "Ubuntu"
+  changed_when: False
+
+- name: Ubuntu specific password workarounds - Set Second Time
+  debconf:
+    name: "mysql-server"
+    question: "mysql-server/root_password_again"
+    value: "{{ root_password | quote }}"
+    vtype: password
+  when: ansible_distribution == "Ubuntu"
+  changed_when: False
+
+- name: Install MySQL Server and MySQL Python interface.
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ mysql_server_package }}"
+    - "{{ mysql_client_package }}"
+    - "{{ mysql_python_package }}"
+
+- name: Enable MySQL Server and Ensure Running.
+  systemd:
+    name: "{{ mysql_service_name }}"
+    state: started
+    enabled: yes
+  when: system_daemon == "systemd"
+

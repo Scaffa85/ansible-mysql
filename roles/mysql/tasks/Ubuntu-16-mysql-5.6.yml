@@ -1,0 +1,12 @@
+---
+# Specifics to Operating System.
+package_manager: "apt"
+system_daemon: "systemd"
+repository_path: "/etc/apt/sources.list.d"
+repositry_filename: "repo_mysql_com_apt_ubuntu.list"
+
+# Specifics to Packages.
+mysql_service_name: "mysql"
+mysql_server_package: "mysql-server-5.6"
+mysql_python_package: "python-mysqldb"
+mysql_client_package: "mysql-client-5.6"

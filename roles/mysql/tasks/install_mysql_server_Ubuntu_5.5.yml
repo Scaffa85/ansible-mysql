@@ -1,0 +1,97 @@
+---
+
+# Note: This has to be done here for Ubuntu due to the password being set up prior to the the run of the 'configure' yaml.
+# If not, we get errors setting up the database later.
+
+- name: Ubuntu Drop a my.cnf for root.
+  template:
+    src: "{{ role_path }}/files/my.cnf.j2"
+    dest: /root/.my.cnf
+    owner: root
+    mode: 0644
+  when: ansible_distribution == "Ubuntu"
+
+- name: Remove apparmor
+  apt:
+    name: apparmor
+    state: absent
+  when: (ansible_distribution == "Ubuntu" and test_run == false )
+
+#- name: Ubuntu specific password workarounds - Set First Time
+#  debconf:
+#    name: "mysql-server"
+#    question: "mysql-server/root_password"
+#    value: "{{ root_password | quote }}"
+#    vtype: password
+#  when: ansible_distribution == "Ubuntu"
+#  changed_when: False
+
+#- name: Ubuntu specific password workarounds - Set Second Time
+#  debconf:
+#    name: "mysql-server"
+#    question: "mysql-server/root_password_again"
+#    value: "{{ root_password | quote }}"
+#    vtype: password
+#  when: ansible_distribution == "Ubuntu"
+#  changed_when: False
+
+- name: Install MySQL interface.
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ mysql_python_package }}"
+    - libaio1
+
+- name: Fetch MySQL package.
+  get_url:
+    url: https://dev.mysql.com/get/Downloads/MySQL-5.5/mysql-5.5.62-linux-glibc2.12-x86_64.tar.gz
+    dest: /tmp/
+    mode: 0440
+
+- name: Ensure group "mysql" exists.
+  group:
+    name: mysql
+    state: present
+
+- name: Ensure user "mysql" exists.
+  user:
+    name: mysql
+    state: present
+    group: mysql
+
+- name: Extract MySQL package into /usr/local
+  unarchive:
+    src: /tmp/mysql-5.5.62-linux-glibc2.12-x86_64.tar.gz
+    dest: /usr/local/
+    remote_src: yes
+
+- name: Move MySQL directory to canonical name.
+  command: mv /usr/local/mysql-5.5.62-linux-glibc2.12-x86_64 /usr/local/mysql
+  ignore_errors: yes
+
+- name: Set MySQL permissions.
+  file:
+    path: /usr/local/mysql
+    owner: mysql
+    group: mysql
+
+- name: Install MySQL.
+  command: /usr/local/mysql/scripts/mysql_install_db --user=mysql
+  become: yes
+
+- name: Copy over Configuration Files.
+  copy:
+    src: /usr/local/mysql/support-files/my-medium.cnf
+    dest: /etc/my.cnf
+
+- name: Start MySQL.
+  command: /usr/local/mysql/bin/mysqld_safe --user=mysql
+  become: yes
+
+- name: Copy over initV files.
+  copy:
+    src: /usr/local/mysql/support-files/mysql.server
+    dest: /etc/init.d/mysql.server
+    remote_src: yes
+    mode: 751
