@@ -51,5 +51,5 @@
   when: root_password is defined
 
 - name: Configure databases.
-  include: "{{ role_path }}/tasks/configure_mysql_databases.yml"
+  include: "{{ role_path }}/tasks/create_mysql_databases.yml"
   when: mysql_databases is defined
