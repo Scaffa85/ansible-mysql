@@ -1,0 +1,7 @@
+---
+
+- name: Create MySQL Databases
+  mysql_db:
+    name: "{{ item} }"
+    state: present
+  with_items: "{{ mysql_databases }}"
