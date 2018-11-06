@@ -38,9 +38,13 @@
   include: apt/apt_disable_5_7.yml
   when: (mysql_version is defined and ansible_distribution == "Ubuntu")
 
-- name: Install MySQL Server
+- name: Install MySQL Server for CentOS
   include: "{{ role_path }}/tasks/install_mysql_server.yml"
-  when: mysql_version is defined
+  when: (mysql_version is defined and ansible_distribution == "CentOS")
+
+- name: Install MySQL 5.5 for Ubuntu
+  include: "{{ role_path }}/tasks/install_mysql_server_{{ ansible_distribution }}_{{ mysql_version}}.yml"
+  when: (mysql_version is defined and ansible_distribution == "Ubuntu")
 
 - name: Configure MySQL Users / Passwords
   include: "{{ role_path }}/tasks/configure_mysql_users.yml"

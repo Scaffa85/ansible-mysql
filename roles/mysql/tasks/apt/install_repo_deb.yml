@@ -1,7 +1,6 @@
 ---
-
 - name: Add MySQL 8 ubuntu xenial repository
   apt_repository:
-    repo: "deb http://repo.mysql.com/apt/ubuntu xenial mysql-{{ mysql_version }}"
+    repo: "deb http://archive.ubuntu.com/ubuntu trusty universe"
     state: present
 
