@@ -29,9 +29,9 @@ script:
     | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotence test: PASS' && exit 0)
     || (echo 'Idempotence test: FAIL' && exit 1)
-  - 'mysql --version > mysql.txt'
+  -  'sudo docker exec "$(cat ${container_id}) mysql --version > mysql.txt'
   - >
-    if grep -q ${mysql} mysql.txt ; then
+    sudo docker exec "$(cat ${container_id})" if grep -q ${mysql} mysql.txt ; then
     (echo 'MySQL version test: PASS' && exit 0)
     else
     (echo 'MySQL version test: FAIL' && exit 1)
