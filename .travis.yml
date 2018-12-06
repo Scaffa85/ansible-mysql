@@ -11,7 +11,7 @@ env:
   # - distribution: centos
   #  version: 7
   #  mysql: 5.6
-  #- distribution: centos
+  - distribution: centos
     version: 6
     mysql: 5.5
     #- distribution: ubuntu
