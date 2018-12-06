@@ -5,18 +5,18 @@ services:
   - docker
 
 env:
-  - distribution: centos
-    version: 7
+  #  - distribution: centos
+  #  version: 7
+  #  mysql: 5.5
+  # - distribution: centos
+  #  version: 7
+  #  mysql: 5.6
+  #- distribution: centos
+    version: 6
     mysql: 5.5
-  - distribution: centos
-    version: 7
-    mysql: 5.6
-  - distribution: ubuntu
-    version: xenial
-    mysql: 5.5
-  - distribution: ubuntu
-    version: xenial
-    mysql: 5.6
+    #- distribution: ubuntu
+    #version: xenial
+    # mysql: 5.6
 
 before_install:
   - 'sudo docker pull ${distribution}:${version}'
